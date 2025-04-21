@@ -10,6 +10,8 @@ function App() {
   const[fromcurrency,setfromcurrency]=useState("USD")
   const[tocurrency,settocurrency]=useState("INR")
   const[convertedamount,setconvertedamount]=useState(null)
+
+  let[darkmode,setdarkmode]=useState(false)
   
   
 
@@ -44,19 +46,42 @@ function App() {
     getamount(fromcurrency,tocurrency,amount)
   },[])
 
+  useEffect(()=>{
+    if(darkmode){
+      document.documentElement.classList.add('dark')
+    }
+    else{
+      document.documentElement.classList.remove('dark')
+    }
+  },[darkmode])
+
   return (
     <>
-     <div className='h-screen w-screen  bg-slate-300 flex justify-center items-center'>
+     <div className='h-screen w-screen  bg-slate-200 flex justify-center items-center'>
 
-          <div className='lg:h-[85%] lg:w-[30%] md:h-[85%] md:w-[40%] sm:h-[85%] sm:w-[50%] h-[100%] w-[100%] bg-blue-950 rounded-md flex flex-col justify-around items-center '>
+          <div className='lg:h-[85%] lg:w-[30%] md:h-[85%] md:w-[40%] sm:h-[85%] sm:w-[50%] h-[100%] w-[100%] bg-slate-400 rounded-md flex flex-col justify-around items-center dark:bg-black'>
 
-              <div className='h-[15%] w-[90%] flex justify-center items-center'>
-                <p className='text-white text-2xl font-serif text-center text-[2em]'>Currency Converter</p>
-              </div>
+              <div className='h-[15%] w-[100%] flex justify-center items-center'>
+
+                   <div className='h-[100%] w-[60%] flex items-center '>
+                   <p className='text-2xl font-serif  text-[2em] dark:text-white'>Currency Converter</p>
+                   </div>
+
+                   <div className='h-[100%] w-[30%] flex justify-center items-center'>
+                        <div className='h-[50%] w-[80%] border border-black rounded-lg flex justify-around items-center dark:border dark:border-white'>
+                        <i className="fa-solid fa-sun text-yellow-400 text-[1.5em] p-2"
+                        onClick={()=>{setdarkmode(false)}}
+                        ></i>
+                        <i className="fa-solid fa-moon text-[1.5em] dark:text-white"
+                        onClick={()=>{setdarkmode(true)}}
+                        ></i>
+                        </div>
+                   </div>
+                </div>
 
               <div className='h-[18%] w-[90%]'>
-                <p className='h-[40%] text-white text-[1.2em] font-serif'>Enter Amount</p>
-                <input type="number" className='h-[50%] w-[100%] bg-slate-500 rounded-md outline-none pl-3 text-white text-[1.3em]'
+                <p className='h-[40%]  text-[1.2em] font-serif dark:text-white'>Enter Amount</p>
+                <input type="number" className='h-[40%] w-[100%] rounded-md outline-none pl-3  text-[1.3em]'
                 min={1}
                 value={amountcopy}
                 onChange={(e)=>{setamountcopy(e.target.value)}}
@@ -66,14 +91,14 @@ function App() {
               <div className='h-[15%] w-[90%]'>
 
                <div className=' h-[40%] w-[100%] flex justify-between'>
-                <p className='text-l  text-white text-[1.2em] font-serif'>From</p>
-                <p className='text-l  text-white text-[1.3em] font-serif'>To</p>
+                <p className='text-l  text-[1.2em] font-serif dark:text-white'>From</p>
+                <p className='text-l  text-[1.3em] font-serif dark:text-white'>To</p>
                </div>
 
-                <div className=' h-[60%] w-[100%] flex  justify-between'>
+                <div className=' h-[45%] w-[100%] flex  justify-between'>
 
                      <div className='h-[100%] w-[35%]  rounded-md'>
-                      <select name="" id="" className='h-[100%] w-[100%] bg-slate-500 text-white text-[1.3em] outline-none rounded-md font-serif'
+                      <select name="" id="" className='h-[100%] w-[100%] text-[1.3em] outline-none rounded-md font-serif'
                       value={fromcurrency}
                       onChange={(e)=>{setfromcurrency(e.target.value)}}>    
                           { Object.entries(currencies).map(([code,name])=>(
@@ -89,7 +114,7 @@ function App() {
                      </div>
 
                      <div className='h-[100%] w-[35%] rounded-md'>
-                        <select name="" id="" className='h-[100%] w-[100%] bg-slate-500 text-white text-[1.3em] outline-none rounded-md font-serif'
+                        <select name="" id="" className='h-[100%] w-[100%] text-[1.3em] outline-none rounded-md font-serif'
                         onChange={(e)=>{settocurrency(e.target.value)}}
                         value={tocurrency} >
                           {Object.entries(currencies).map(([code,name]) => (
@@ -106,13 +131,13 @@ function App() {
               </div>
 
               <div className='h-[15%] w-[90%]  flex justify-center items-center'>
-                  <button className='h-[60%] w-[100%] bg-blue-400 rounded-md text-[1.2em] hover:bg-blue-600 font-serif'
+                  <button className='h-[45%] w-[100%] bg-blue-400 rounded-md text-[1.2em] hover:bg-blue-600 font-serif'
                   onClick={handleconvertedamount}
                   >Get Exchange Rate</button>
               </div>
 
               <div className='h-[15%] w-[90%] '>
-                <div className='h-[70%] w-100% bg-slate-500 text-white flex justify-center items-center rounded-md'>
+                <div className='h-[50%] w-100% bg-white text-black flex justify-center items-center rounded-md'>
                       <p className='text-[1.3em] font-sans'>{amount} {fromcurrency} = {convertedamount} {tocurrency}</p>
                 </div>
               </div>
