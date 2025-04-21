@@ -39,6 +39,7 @@ function App() {
     
     await getamount(fromcurrency,tocurrency,amountcopy)
     setamount(amountcopy)
+
   }
 
   useEffect(()=>{
@@ -98,7 +99,7 @@ function App() {
                 <div className=' h-[45%] w-[100%] flex  justify-between'>
 
                      <div className='h-[100%] w-[35%]  rounded-md'>
-                      <select name="" id="" className='h-[100%] w-[100%] text-[1.3em] outline-none rounded-md font-serif'
+                      <select name="" id="" className='h-[100%] w-[100%] text-[1.2em] outline-none rounded-md font-serif'
                       value={fromcurrency}
                       onChange={(e)=>{setfromcurrency(e.target.value)}}>    
                           { Object.entries(currencies).map(([code,name])=>(
@@ -114,7 +115,7 @@ function App() {
                      </div>
 
                      <div className='h-[100%] w-[35%] rounded-md'>
-                        <select name="" id="" className='h-[100%] w-[100%] text-[1.3em] outline-none rounded-md font-serif'
+                        <select name="" id="" className='h-[100%] w-[100%] text-[1.2em] outline-none rounded-md font-serif'
                         onChange={(e)=>{settocurrency(e.target.value)}}
                         value={tocurrency} >
                           {Object.entries(currencies).map(([code,name]) => (
