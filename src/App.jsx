@@ -69,13 +69,13 @@ function App() {
                    </div>
 
                    <div className='h-[100%] w-[30%] flex justify-center items-center'>
-                        <div className='h-[50%] w-[80%] border border-black rounded-lg flex justify-around items-center dark:border dark:border-white'>
-                        <i className="fa-solid fa-sun text-yellow-400 text-[1.5em] p-2"
+                        <div className='h-[50%] w-[50%] l rounded-lg flex justify-around items-center  '>
+                        {darkmode? <i className="fa-solid fa-sun text-yellow-400 text-[1.5em] p-2 hover:cursor-pointer hover:scale-110"
                         onClick={()=>{setdarkmode(false)}}
-                        ></i>
-                        <i className="fa-solid fa-moon text-[1.5em] dark:text-white"
+                        ></i>:<i className="fa-solid fa-moon text-[1.7em] hover:scale-110 hover:cursor-pointer"
                         onClick={()=>{setdarkmode(true)}}
                         ></i>
+                        }
                         </div>
                    </div>
                 </div>
