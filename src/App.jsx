@@ -275,7 +275,7 @@ function App() {
 
                      <div className='h-[100%] w-[35%]  rounded-md flex justify-between'>
                      <img src={`https://flagsapi.com/${countryList[fromcurrencycopy]}/flat/32.png`} alt="" className='h-[100%] w-[30%] object-cover bg-white rounded-l-lg'/>
-                      <select name="" id="" className='h-[100%] w-[70%] text-[1.2em] outline-none rounded-r-lg font-serif '
+                      <select name="" id="" className='h-[100%] w-[70%] text-[1.2em] outline-none rounded-r-lg bg-white font-serif '
                       value={fromcurrencycopy}
                       onChange={(e)=>{setfromcurrencycopy(e.target.value)}}>    
                           { Object.keys(currencies).map((code)=>(
@@ -295,7 +295,7 @@ function App() {
 
                      <img src={`https://flagsapi.com/${countryList[tocurrencycopy]}/flat/32.png`} alt="" className='h-[100%] w-[30%] object-cover bg-white rounded-l-lg'/>
                       
-                        <select name="" id="" className='h-[100%] w-[70%] text-[1.2em] outline-none rounded-r-lg font-serif'
+                        <select name="" id="" className='h-[100%] w-[70%] text-[1.2em] outline-none rounded-r-lg font-serif bg-white'
                         onChange={(e)=>{settocurrencycopy(e.target.value)}}
                         value={tocurrencycopy} >
                           {Object.keys(currencies).map((code) => (
